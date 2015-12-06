@@ -11,7 +11,6 @@ public class Room implements IRoom {
 	protected static int computerNum; // number of computers in this Room
 	protected static String seatLayout;
 	protected static boolean hasWhiteboard;
-	protected static boolean isTiered;
 	
 	protected static DeskType deskType;
 	protected static ComputerType computerType;
@@ -84,17 +83,6 @@ public class Room implements IRoom {
 		return null;
 	}
 	
-	public Room getRoom(String roomType) {
-		if(roomType.equals("Classroom"))
-			return new Classroom();
-		else if(roomType.equals("Lecture Hall"))
-			return new LectureHall();
-		else if(roomType.equals("Computer Lab"))
-			return new ComputerLab();
-		
-		return null;
-	}
-
 	@Override
 	public int getRoomNumber() {
 		return Room.roomNum;
