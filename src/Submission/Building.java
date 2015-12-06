@@ -11,7 +11,11 @@ import DontChange.IRoom;
 
 public class Building implements IBuilding{
 	
-	ArrayList<IRoom> rooms;	
+	Collection<IRoom> rooms;
+	
+	public Building() {
+		this.rooms = new ArrayList<IRoom>();
+	}
 
 	public Collection<IRoom> getRooms() {
 		return this.rooms;

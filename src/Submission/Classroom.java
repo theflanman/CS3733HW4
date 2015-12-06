@@ -4,16 +4,21 @@ import DontChange.*;
 
 public class Classroom extends Room implements IClassroom {
 		
-	public Classroom() {
+	public Classroom(int roomNum, int maxPeople, String seatLayout,
+			boolean hasWhiteboard, DeskType deskType, ComputerType computerType) {
 		super(roomNum, maxPeople, seatLayout, hasWhiteboard, deskType, computerType);
 	}
 
+	public Classroom(Room room) {
+		super(room);
+	}
+
 	public DeskType getDeskType() {
-		return Classroom.deskType;
+		return this.deskType;
 	}
 
 	public void setDeskType(DeskType type) {
-		Classroom.deskType = type;		
+		this.deskType = type;		
 	}
 
 }

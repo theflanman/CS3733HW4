@@ -6,38 +6,70 @@ import DontChange.IRoom;
 
 public class Room implements IRoom {
 
-	protected static int roomNum;
-	protected static int maxPeople; // max # of people in this Room
-	protected static int computerNum; // number of computers in this Room
-	protected static String seatLayout;
-	protected static boolean hasWhiteboard;
+	protected int roomNum;
+	protected int maxPeople; // max # of people in this Room
+	protected int computerNum; // number of computers in this Room
+	protected String seatLayout;
+	protected boolean hasWhiteboard;
 	
-	protected static DeskType deskType;
-	protected static ComputerType computerType;
+	protected DeskType deskType;
+	protected ComputerType computerType;
 	
 	// constructor
 	public Room(int roomNum, int maxPeople, String seatLayout,
 			boolean hasWhiteboard, DeskType deskType, ComputerType computerType) {
 		
-		Room.roomNum = roomNum;
-		Room.maxPeople = maxPeople;
-		Room.computerNum = computerNum;
-		Room.seatLayout = seatLayout;
-		Room.hasWhiteboard = hasWhiteboard;
-		Room.deskType = deskType;
-		Room.computerType = computerType;
+		this.roomNum = roomNum;
+		this.maxPeople = maxPeople;
+		this.computerNum = computerNum;
+		this.seatLayout = seatLayout;
+		this.hasWhiteboard = hasWhiteboard;
+		this.deskType = deskType;
+		this.computerType = computerType;
+	}
+	
+	public Room(Room room) {
+		this.roomNum = room.roomNum;
+		this.maxPeople = room.maxPeople;
+		this.computerNum = room.computerNum;
+		this.seatLayout = room.seatLayout;
+		this.hasWhiteboard = room.hasWhiteboard;
+		this.deskType = room.deskType;
+		this.computerType = room.computerType;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) {
+			return true;
+		}
+		
+		if (obj == null || obj.getClass() != this.getClass()) {
+			return false;
+		}
+		
+		Room testRoom = (Room) obj;
+		
+		return testRoom.hasWhiteboard == this.hasWhiteboard &&
+				testRoom.computerNum == this.computerNum &&
+				testRoom.computerType == this.computerType &&
+				testRoom.deskType == this.deskType &&
+				testRoom.maxPeople == this.maxPeople &&
+				testRoom.roomNum == this.roomNum &&
+				testRoom.seatLayout == this.seatLayout;
+		
 	}
 
 	@Override
 	public int roomSize() {
-		return Room.maxPeople;
+		return this.maxPeople;
 	}
 
 	@Override
 	public boolean isClassroom() {
-		if(Room.maxPeople >= 15 && Room.maxPeople <= 60){
-			if(! Room.seatLayout.equals("tiered")){
-				if(Room.hasWhiteboard){
+		if(this.maxPeople >= 15 && this.maxPeople <= 60){
+			if(! this.seatLayout.equals("tiered")){
+				if(this.hasWhiteboard){
 					if(computerNum == 0)
 						return true;
 				}
@@ -49,8 +81,8 @@ public class Room implements IRoom {
 
 	@Override
 	public boolean isLectureHall() {
-		if(Room.maxPeople >= 61 && Room.maxPeople <= 200){
-			if(Room.seatLayout.equals("tiered")){
+		if(this.maxPeople >= 61 && this.maxPeople <= 200){
+			if(this.seatLayout.equals("tiered")){
 				if(computerNum == 0)
 					return true;
 			}
@@ -61,8 +93,8 @@ public class Room implements IRoom {
 
 	@Override
 	public boolean isComputerLab() {
-		if(Room.maxPeople >= 25 && Room.maxPeople <= 40){
-			if(! Room.seatLayout.equals("tiered")){
+		if(this.maxPeople >= 25 && this.maxPeople <= 40){
+			if(! this.seatLayout.equals("tiered")){
 				if(computerNum > 0)
 					return true;
 			}
@@ -85,7 +117,7 @@ public class Room implements IRoom {
 	
 	@Override
 	public int getRoomNumber() {
-		return Room.roomNum;
+		return this.roomNum;
 	}
 
 }

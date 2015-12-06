@@ -6,18 +6,23 @@ import DontChange.IComputerLab;
 
 public class ComputerLab extends Room implements IComputerLab {
 
-	public ComputerLab() {
+	public ComputerLab(int roomNum, int maxPeople, String seatLayout,
+			boolean hasWhiteboard, DeskType deskType, ComputerType computerType) {
 		super(roomNum, maxPeople, seatLayout, hasWhiteboard, deskType, computerType);
+	}
+	
+	public ComputerLab(Room room) {
+		super(room);
 	}
 
 	@Override
 	public ComputerType getComputerType() {
-		return ComputerLab.computerType;
+		return this.computerType;
 	}
 
 	@Override
 	public void setComputerType(ComputerType computerType) {
-		ComputerLab.computerType = computerType;
+		this.computerType = computerType;
 	}
 
 }
