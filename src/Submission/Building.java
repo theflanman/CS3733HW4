@@ -19,7 +19,6 @@ public class Building implements IBuilding{
 
 	public void addRoom(IRoom newRoom) {
 		this.rooms.add(newRoom);
-		
 	}
 
 	public Collection<IClassroom> getClassrooms() {
