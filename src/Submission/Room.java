@@ -26,6 +26,10 @@ public class Room implements IRoom {
 		this.hasWhiteboard = hasWhiteboard;
 		this.deskType = deskType;
 		this.computerType = computerType;
+		
+		if (this.computerType != null) {
+			this.computerNum = 1;
+		}
 	}
 	
 	public Room(Room room) {
@@ -36,6 +40,10 @@ public class Room implements IRoom {
 		this.hasWhiteboard = room.hasWhiteboard;
 		this.deskType = room.deskType;
 		this.computerType = room.computerType;
+		
+		if (this.computerType != null) {
+			this.computerNum = 1;
+		}
 	}
 	
 	@Override
@@ -68,7 +76,7 @@ public class Room implements IRoom {
 	@Override
 	public boolean isClassroom() {
 		if(this.maxPeople >= 15 && this.maxPeople <= 60){
-			if(! this.seatLayout.equals("tiered")){
+			if(! this.seatLayout.equals("tiered") && this.computerType == null){
 				if(this.hasWhiteboard){
 					if(computerNum == 0)
 						return true;
