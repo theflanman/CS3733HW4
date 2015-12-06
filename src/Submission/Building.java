@@ -1,5 +1,6 @@
 package Submission;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import DontChange.IBuilding;
@@ -9,35 +10,65 @@ import DontChange.ILectureHall;
 import DontChange.IRoom;
 
 public class Building implements IBuilding{
+	
+	ArrayList<IRoom> rooms;	
 
-	@Override
 	public Collection<IRoom> getRooms() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.rooms;
 	}
 
-	@Override
 	public void addRoom(IRoom newRoom) {
-		// TODO Auto-generated method stub
+		this.rooms.add(newRoom);
 		
 	}
 
-	@Override
 	public Collection<IClassroom> getClassrooms() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Collection<IClassroom> classRooms = new ArrayList<IClassroom>();
+		IRoom[] roomArray = (IRoom[]) this.rooms.toArray();
+		
+		for (int i = 0; i < this.rooms.size(); i++) {
+			if (roomArray[i].getType() == "Classroom") {
+				
+				classRooms.add((IClassroom) roomArray[i]);
+				
+			}
+		}
+		
+		return classRooms;
 	}
 
-	@Override
 	public Collection<ILectureHall> getLectureHalls() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Collection<ILectureHall> lectureHalls = new ArrayList<ILectureHall>();
+		IRoom[] roomArray = (IRoom[]) this.rooms.toArray();
+		
+		for (int i = 0; i < this.rooms.size(); i++) {
+			if (roomArray[i].getType() == "Lecture Hall") {
+				
+				lectureHalls.add((ILectureHall) roomArray[i]);
+				
+			}
+		}
+		
+		return lectureHalls;
 	}
 
 	@Override
 	public Collection<IComputerLab> getComputerLabs() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Collection<IComputerLab> computerLabs = new ArrayList<IComputerLab>();
+		IRoom[] roomArray = (IRoom[]) this.rooms.toArray();
+		
+		for (int i = 0; i < this.rooms.size(); i++) {
+			if (roomArray[i].getType() == "Computer Lab") {
+				
+				computerLabs.add((IComputerLab) roomArray[i]);
+				
+			}
+		}
+		
+		return computerLabs;
 	}
 
 }
