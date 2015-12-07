@@ -4,6 +4,11 @@ import DontChange.ComputerType;
 import DontChange.DeskType;
 import DontChange.IBuilding;
 
+/**
+ * 
+ * @author Nathan George and Connor Flanigan
+ *
+ */
 public class Main {
 	
 	public static void main(String args[]) {

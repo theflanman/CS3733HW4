@@ -21,7 +21,6 @@ public class Room implements IRoom {
 		
 		this.roomNum = roomNum;
 		this.maxPeople = maxPeople;
-		this.computerNum = computerNum;
 		this.seatLayout = seatLayout;
 		this.hasWhiteboard = hasWhiteboard;
 		this.deskType = deskType;
